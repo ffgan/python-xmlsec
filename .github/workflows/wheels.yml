@@ -88,6 +88,7 @@ jobs:
           MATRIX=$(
             {
               cibuildwheel --print-build-identifiers --platform linux \
+              | grep -v 'musllinux_riscv64' \
               | jq -nRc '{"only": inputs, "os": "ubuntu-latest"}' \
               && cibuildwheel --print-build-identifiers --platform macos \
               | jq -nRc '{"only": inputs, "os": "macos-latest"}' \
