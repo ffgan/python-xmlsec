@@ -132,6 +132,7 @@ jobs:
           only: ${{ matrix.only }}
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          CIBW_ENVIRONMENT: CFLAGS="-mcmodel=medany" LDFLAGS="-mcmodel=medany"
 
       - uses: actions/upload-artifact@v4.3.1
         with:
