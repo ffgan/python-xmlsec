@@ -130,7 +130,7 @@ jobs:
         if: contains(matrix.only, 'riscv64')
         run: |
           echo "CIBW_ENVIRONMENT=CFLAGS='-mcmodel=medany' LDFLAGS='-mcmodel=medany'" >> $GITHUB_ENV
-          echo "CIBW_BEFORE_BUILD='bash {project}/.github/scripts/install-rust.sh'" >> $GITHUB_ENV
+          echo "CIBW_BEFORE_BUILD=\"curl --proto =https --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y && . '$HOME/.cargo/env' && rustup default-host riscv64gc-unknown-linux-gnu\"" >> $GITHUB_ENV
 
       - name: Build wheels
         uses: pypa/cibuildwheel@v3.1.3
