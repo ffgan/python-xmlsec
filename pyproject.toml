@@ -126,4 +126,4 @@ archs = ["AMD64"]
 
 [[tool.cibuildwheel.overrides]]
 select = "*-manylinux*"
-before-all = "yum install -y perl-core libxml2-devel xmlsec1-devel xmlsec1-openssl-devel libtool-ltdl-devel"
+before-all = "yum install -y perl-core"
