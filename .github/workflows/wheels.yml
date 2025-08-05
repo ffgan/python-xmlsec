@@ -128,7 +128,9 @@ jobs:
           platforms: all
       - name: Set RISC-V specific build flags
         if: contains(matrix.only, 'riscv64')
-        run: echo "CIBW_ENVIRONMENT=CFLAGS='-mcmodel=medany' LDFLAGS='-mcmodel=medany'" >> $GITHUB_ENV
+        run: |
+          echo "CIBW_ENVIRONMENT=CFLAGS='-mcmodel=medany' LDFLAGS='-mcmodel=medany'" >> $GITHUB_ENV
+          echo "CIBW_BEFORE_BUILD='bash {project}/.github/scripts/install-rust.sh' >> $GITHUB_ENV
 
       - name: Build wheels
         uses: pypa/cibuildwheel@v3.1.3
