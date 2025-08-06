@@ -145,7 +145,7 @@ jobs:
           CIBW_ENVIRONMENT: CFLAGS='-mcmodel=medany' LDFLAGS='-mcmodel=medany'
           CIBW_BEFORE_BUILD: >
             yum install -y libxml2-devel xmlsec1-devel xmlsec1-openssl-devel libtool-ltdl-devel && curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y &&
-            . "$HOME/.cargo/env" && rustup --version && rustup target add riscv64gc-unknown-linux-gnu &&  rustup set default-host riscv64gc-unknown-linux-gnu
+            source "$HOME/.cargo/env" && rustup --version && rustup target add riscv64gc-unknown-linux-gnu &&  rustup set default-host riscv64gc-unknown-linux-gnu
 
       - uses: actions/upload-artifact@v4.3.1
         with:
