@@ -89,6 +89,7 @@ jobs:
             {
               cibuildwheel --print-build-identifiers --platform linux \
               | grep -v 'musllinux_riscv64' \
+              | grep 'riscv64' \
               | jq -nRc '{"only": inputs, "os": "ubuntu-latest"}' \
               && cibuildwheel --print-build-identifiers --platform macos \
               | jq -nRc '{"only": inputs, "os": "macos-latest"}' \
@@ -96,9 +97,7 @@ jobs:
               | jq -nRc '{"only": inputs, "os": "windows-2022"}' \
               && cibuildwheel --print-build-identifiers --platform windows --archs ARM64 \
               | jq -nRc '{"only": inputs, "os": "windows-11-arm"}'
-            } | jq -sc \
-              | grep 'riscv64'
-
+            } | jq -sc 
           )
           echo "include=$MATRIX"
           echo "include=$MATRIX" >> $GITHUB_OUTPUT
