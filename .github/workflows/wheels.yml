@@ -146,7 +146,7 @@ jobs:
           only: ${{ matrix.only }}
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          CIBW_ENVIRONMENT: CFLAGS='-mcmodel=medany' LDFLAGS='-mcmodel=medany' PATH="$HOME/.cargo/bin:$PATH"
+          CIBW_ENVIRONMENT: CFLAGS='-mcmodel=medany' LDFLAGS='-mcmodel=medany' PATH="$HOME/.cargo/bin:$PATH" XMLSEC_CRYPTO_DYNAMIC_LOADING=0
           CIBW_BEFORE_BUILD: >
             yum install -y libxml2-devel xmlsec1-devel xmlsec1-openssl-devel libtool-ltdl-devel  pkgconfig && curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y &&
             rustup --version && rustup target add riscv64gc-unknown-linux-gnu &&  rustup set default-host riscv64gc-unknown-linux-gnu
