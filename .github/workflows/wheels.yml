@@ -92,10 +92,13 @@ jobs:
               | grep 'riscv64' \
               | jq -nRc '{"only": inputs, "os": "ubuntu-latest"}' \
               && cibuildwheel --print-build-identifiers --platform macos \
+              | grep 'riscv64' \
               | jq -nRc '{"only": inputs, "os": "macos-latest"}' \
               && cibuildwheel --print-build-identifiers --platform windows \
+              | grep 'riscv64' \
               | jq -nRc '{"only": inputs, "os": "windows-2022"}' \
               && cibuildwheel --print-build-identifiers --platform windows --archs ARM64 \
+              | grep 'riscv64' \
               | jq -nRc '{"only": inputs, "os": "windows-11-arm"}'
             } | jq -sc 
           )
