@@ -146,9 +146,7 @@ jobs:
           only: ${{ matrix.only }}
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          CIBW_ENVIRONMENT: CFLAGS='-mcmodel=medany' LDFLAGS='-mcmodel=medany' PYXMLSEC_STATIC_DEPS="true" PYXMLSEC_LIBXML2_VERSION='2.14.4' PYXMLSEC_LIBXSLT_VERSION='1.1.43'
-          CIBW_BEFORE_BUILD: >
-            dnf install libxml2-devel xmlsec1-devel xmlsec1-openssl-devel libtool-ltdl-devel -y
+          CIBW_ENVIRONMENT: PYXMLSEC_STATIC_DEPS=true PYXMLSEC_LIBXML2_VERSION='2.14.4' PYXMLSEC_LIBXSLT_VERSION='1.1.43'
 
       - uses: actions/upload-artifact@v4.3.1
         with:
