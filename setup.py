@@ -394,9 +394,8 @@ class build_ext(build_ext_orig):
             ldflags.append(env['LDFLAGS'])
 
         cross_compiling = False
+        import platform
         if build_platform == 'darwin':
-            import platform
-
             arch = self.plat_name.rsplit('-', 1)[1]
             if arch != platform.machine() and arch in ('x86_64', 'arm64'):
                 self.info(f'Cross-compiling for {arch}')
@@ -413,7 +412,7 @@ class build_ext(build_ext_orig):
         self.info('Building OpenSSL')
         openssl_dir = next(self.build_libs_dir.glob('openssl-*'))
         openssl_config_cmd = [prefix_arg, 'no-shared', '-fPIC', '--libdir=lib']
-        if platform.machine() == "ricv64":
+        if platform.machine() == "riscv64":
             # add `no-asm` flag for openssl while build for riscv64
 
             # on openssl 3.5.2, When building for riscv64, ASM code is used by default. 
