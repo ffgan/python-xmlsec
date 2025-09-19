@@ -1,5 +1,5 @@
 [build-system]
-requires = ["setuptools>=42", "wheel", "setuptools_scm[toml]>=3.4", "pkgconfig>=1.5.1", "lxml>=3.8, !=4.7.0"]
+requires = ["setuptools==80.9.0", "wheel", "setuptools_scm[toml]>=3.4", "pkgconfig>=1.5.1", "lxml==6.0.1"]
 
 [tool.mypy]
 files = ['src']
@@ -109,13 +109,15 @@ test-skip = "*-macosx_arm64"
 PYXMLSEC_STATIC_DEPS = "true"
 
 [tool.cibuildwheel.linux]
-archs = ["x86_64", "aarch64"]
+archs = ["x86_64", "aarch64", "riscv64"]
 environment-pass = [
     "PYXMLSEC_LIBXML2_VERSION",
     "PYXMLSEC_LIBXSLT_VERSION",
     "PYXMLSEC_STATIC_DEPS",
     "GH_TOKEN"
 ]
+
+[tool.setuptools_scm]
 
 [tool.cibuildwheel.macos]
 archs = ["x86_64", "arm64"]
